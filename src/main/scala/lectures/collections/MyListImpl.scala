@@ -31,7 +31,7 @@ object MyListImpl extends App {
     }
 
     def foldLeft(acc: Int)(f: ((Int, Int)) => Int): Int = this match {
-      case MyList(head :: tail) => tail.foldLeft(f(acc, head))(f(_, _))
+      case MyList(head :: tail) => MyList(tail).foldLeft(f(acc, head))(f)
       case MyList(Nil) => acc
     }
   }
